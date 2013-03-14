@@ -23,9 +23,13 @@ class SiteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('TrisoftSiteBundle:Site')->findAll();
-
+       
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $entities, $this->get('request')->query->get('page', 1)/* page number */, 5/* limit per page */
+        );
         return $this->render('TrisoftSiteBundle:Site:index.html.twig', array(
-            'entities' => $entities,
+            'pagination' => $pagination,
         ));
     }
 
@@ -44,7 +48,7 @@ class SiteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('site', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('site' ));
         }
 
         return $this->render('TrisoftSiteBundle:Site:new.html.twig', array(

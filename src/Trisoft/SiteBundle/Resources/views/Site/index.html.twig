@@ -2,39 +2,30 @@
 
 {% block body -%}
     <h1>Site list</h1>
+    
+    <table>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Url</th>
-                <th>Is_active</th>
-                <th>Created_at</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ entity.id }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.url }}</td>
-                <td>{{ entity.isactive }}</td>
-                <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-               
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-        <ul>
+{# table body #}
+{% for entity in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+    <td>{{ entity.id }}</td>
+    <td>{{ entity.name }}</td>
+    <td>{{ entity.url }}</td>
+    <td>{{ entity.isactive }}</td>
+    <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+     <ul>
         <li>
             <a href="{{ path('site_new') }}">
                 Create a new entry
             </a>
         </li>
-    </ul>
+    </ul> 
     {% endblock %}
