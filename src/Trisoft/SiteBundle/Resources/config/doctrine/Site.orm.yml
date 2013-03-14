@@ -1,0 +1,26 @@
+Trisoft\SiteBundle\Entity\Site:
+  type: entity
+  table: site
+  repositoryClass: Trisoft\SiteBundle\Repository\SiteRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+    url:
+      type: string
+      length: 255
+      nullable: false
+    is_active:
+      type: boolean
+      nullable: true   
+    created_at:
+      type: datetime
+      columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      nullable: false
+    

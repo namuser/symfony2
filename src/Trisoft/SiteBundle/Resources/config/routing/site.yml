@@ -1,0 +1,13 @@
+site:
+    pattern:  /
+    defaults: { _controller: "TrisoftSiteBundle:Site:index" }
+
+site_new:
+    pattern:  /new
+    defaults: { _controller: "TrisoftSiteBundle:Site:new" }
+
+site_create:
+    pattern:  /create
+    defaults: { _controller: "TrisoftSiteBundle:Site:create" }
+    requirements: { _method: post }
+

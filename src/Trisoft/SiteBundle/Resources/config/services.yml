@@ -1,0 +1,7 @@
+parameters:
+#    trisoft_site.example.class: Trisoft\SiteBundle\Example
+
+services:
+#    trisoft_site.example:
+#        class: %trisoft_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

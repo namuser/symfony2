@@ -1,0 +1,4 @@
+trisoft_site:
+    resource: "@TrisoftSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
